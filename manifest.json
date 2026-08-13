@@ -1,0 +1,18 @@
+{
+  "name": "SLIET Antriksha Vigyan Club",
+  "short_name": "Antriksha",
+  "description": "Official Space & Astronomy Club of SLIET Longowal",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

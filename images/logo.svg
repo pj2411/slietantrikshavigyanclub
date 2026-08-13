@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Core Glow Filter -->
+    <filter id="core-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <g transform="translate(100, 100)">
+    <!-- Orbital Ring 1 (Vertical) -->
+    <ellipse rx="34" ry="82" fill="none" stroke="#0f172a" stroke-width="7" transform="rotate(0)" />
+    
+    <!-- Orbital Ring 2 (Rotated 60deg) -->
+    <ellipse rx="34" ry="82" fill="none" stroke="#0f172a" stroke-width="7" transform="rotate(60)" />
+
+    <!-- Orbital Ring 3 (Rotated -60deg) -->
+    <ellipse rx="34" ry="82" fill="none" stroke="#0f172a" stroke-width="7" transform="rotate(-60)" />
+
+    <!-- Red Center Nucleus -->
+    <circle cx="0" cy="0" r="24" fill="#e11d48" stroke="#9f1239" stroke-width="2.5" filter="url(#core-glow)" />
+
+    <!-- Gold Electron 1 (Top Right Ring) -->
+    <circle cx="33" cy="-70" r="10" fill="#f59e0b" stroke="#0f172a" stroke-width="3" />
+
+    <!-- Gold Electron 2 (Bottom Right Ring) -->
+    <circle cx="50" cy="60" r="10" fill="#f59e0b" stroke="#0f172a" stroke-width="3" />
+
+    <!-- Gold Electron 3 (Left Ring) -->
+    <circle cx="-72" cy="-22" r="10" fill="#f59e0b" stroke="#0f172a" stroke-width="3" />
+  </g>
+</svg>

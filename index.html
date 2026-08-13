@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SLIET Antriksha Vigyan Club - Official Space & Astronomy Club of Sant Longowal Institute of Engineering & Technology. Stargazing, Astrophysics, Satellite Tech, and Space Research.">
+    <meta name="keywords"
+        content="SLIET, Antriksha Vigyan Club, Astronomy, Space Science, Astrophysics, Longowal, Stargazing, Satellite Tech, CanSat, ISRO, Space Club">
+    <meta name="author" content="SLIET Antriksha Vigyan Club">
+    <meta name="theme-color" content="#4f46e5">
+
+    <!-- Open Graph / Facebook / WhatsApp SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://slietantriksha.ac.in/">
+    <meta property="og:title" content="SLIET Antriksha Vigyan Club | Space & Astronomy">
+    <meta property="og:description"
+        content="Exploring the Universe, Inspiring Curiosity, Building the Future. Official Astronomy & Space Research Club of SLIET Longowal.">
+    <meta property="og:image" content="https://slietantriksha.ac.in/images/favicon.svg">
+
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SLIET Antriksha Vigyan Club | Space & Astronomy">
+    <meta name="twitter:description"
+        content="Exploring the Universe, Inspiring Curiosity, Building the Future. Official Space Club of SLIET Longowal.">
+
+    <title>SLIET Antriksha Vigyan Club | Space & Astronomy</title>
+
+    <!-- Favicon & PWA Manifest -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans, JetBrains Mono, Outfit, Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- JSON-LD Structured Data Schema for Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "SLIET Antriksha Vigyan Club",
+      "alternateName": "SLIET Space Club",
+      "url": "https://slietantriksha.ac.in",
+      "logo": "https://slietantriksha.ac.in/images/favicon.svg",
+      "description": "Official Space, Astronomy, and Satellite Technology Student Club at Sant Longowal Institute of Engineering & Technology.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Longowal",
+        "addressRegion": "Punjab",
+        "postalCode": "148106",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
+                        space: ['"Space Grotesk"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        space: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            700: '#1e293b',
+                            800: '#0f172a',
+                            900: '#060814',
+                            cyan: '#0284c7',
+                            purple: '#7c3aed',
+                            indigo: '#4f46e5',
+                            pink: '#ec4899',
+                            sky: '#0ea5e9'
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'float-medium': 'float 4s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                        'spin-slow': 'spin 25s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-15px) rotate(3deg)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6', filter: 'drop-shadow(0 0 15px rgba(79, 70, 229, 0.25))' },
+                            '50%': { opacity: '0.9', filter: 'drop-shadow(0 0 25px rgba(2, 132, 199, 0.45))' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body
+    class="bg-[#f4f4f6] dark:bg-space-950 text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-amber-600 selection:text-white">
+
+    <!-- Interactive Canvas Particle Starfield Background -->
+    <canvas id="space-stars" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3.5 group shrink-0">
+                <img src="images/logo.svg" alt="SLIET Logo"
+                    class="w-12 h-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform">
+                <div>
+                    <span
+                        class="font-extrabold text-lg sm:text-xl tracking-wider block leading-none dark:text-white text-slate-900">Antriksha
+                        Vigyan Club</span>
+                    <span
+                        class="text-xs text-amber-700 dark:text-sky-400 tracking-widest uppercase font-mono font-bold block mt-1">SLIET
+                        LONGOWAL</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-7 text-base font-bold text-slate-800 dark:text-slate-200">
+                <a href="#home" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Home</a>
+                <a href="#sky-watch"
+                    class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5"><i
+                        class="fa-solid fa-moon text-xs text-amber-600 dark:text-sky-400"></i> Sky Watch</a>
+                <a href="#domains" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Domains</a>
+                <a href="#events" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Events</a>
+                <a href="#contact" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Contact</a>
+                <a href="#about" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">About</a>
+            </div>
+
+            <!-- Action Controls: Theme Switcher & Join Button -->
+            <div class="hidden md:flex items-center space-x-4">
+                <!-- Light/Dark Mode Toggle Switcher -->
+                <button id="theme-toggle" onclick="toggleTheme()"
+                    class="p-3 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-amber-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-300 dark:border-slate-700 shadow-sm"
+                    title="Toggle Light/Dark Theme">
+                    <i id="theme-toggle-icon" class="fa-solid fa-sun text-amber-500 text-base"></i>
+                </button>
+
+                <button onclick="openJoinModal()"
+                    class="px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-sm hover:opacity-95 transition-all shadow-md shadow-amber-500/25 hover:shadow-lg hover:shadow-amber-500/40 hover:scale-[1.02]">
+                    Join Us <i class="fa-solid fa-arrow-right-long ml-1.5 text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Action & Menu Toggle -->
+            <div class="flex md:hidden items-center space-x-2">
+                <button onclick="toggleTheme()"
+                    class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-amber-400 border border-slate-200 dark:border-slate-700">
+                    <i id="theme-toggle-icon-mobile" class="fa-solid fa-sun text-amber-500"></i>
+                </button>
+                <button id="mobile-menu-btn"
+                    class="p-2 text-slate-700 dark:text-slate-300 hover:text-amber-600 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu"
+            class="hidden md:hidden glass-card border-t border-slate-200 dark:border-slate-800 px-6 py-4 space-y-3 font-semibold text-slate-700 dark:text-slate-200">
+            <a href="#home" class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Home</a>
+            <a href="#sky-watch" class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Sky
+                Watch</a>
+            <a href="#domains"
+                class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Domains</a>
+            <a href="#events"
+                class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Events</a>
+            <a href="#contact"
+                class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Contact</a>
+            <a href="#about" class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">About</a>
+            <button onclick="openJoinModal()"
+                class="w-full mt-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-sm shadow-md">
+                Join Us
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Section 1) -->
+    <section id="home" class="relative min-h-screen pt-36 pb-20 flex items-center justify-center overflow-hidden z-10">
+        <!-- Ambient Light Celestial Glow Disks -->
+        <div
+            class="absolute top-24 left-10 w-72 h-72 rounded-full bg-amber-200/40 dark:bg-purple-600/20 blur-3xl animate-float-slow pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-20 right-12 w-96 h-96 rounded-full bg-orange-100/50 dark:bg-sky-500/20 blur-3xl animate-float-medium pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full gradient-badge text-amber-800 dark:text-amber-300 text-xs font-mono font-semibold uppercase tracking-widest mb-6">
+                <span class="w-2 h-2 rounded-full bg-amber-600 dark:bg-amber-400 animate-ping"></span>
+                Official Astronomy & Space Club of SLIET
+            </div>
+
+            <h1
+                class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900 dark:text-white">
+                SLIET Antriksha Vigyan Club
+                <span class="block gradient-text mt-3">Exploring the Universe, Inspiring Curiosity, Building the
+                    Future</span>
+            </h1>
+
+            <p
+                class="max-w-3xl mx-auto text-slate-600 dark:text-slate-300 text-lg sm:text-xl font-normal mb-10 leading-relaxed">
+                Empowering young minds through stargazing observation, astrophysics research, satellite engineering, and
+                cosmic exploration.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#about"
+                    class="w-full sm:w-auto px-8 py-3.5 rounded-full glass-card border border-slate-300 dark:border-white/20 text-slate-800 dark:text-white font-semibold transition-all hover:bg-slate-100 dark:hover:bg-slate-800">
+                    About Us
+                </a>
+                <button onclick="openJoinModal()"
+                    class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold transition-all shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105">
+                    <span>Join Our Community</span>
+                    <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sky Watch: What's Happening in Sky (Live Alert Widget) -->
+    <section id="sky-watch" class="py-16 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="p-8 sm:p-10 rounded-3xl glass-card relative overflow-hidden">
+                <div
+                    class="absolute -right-10 -bottom-10 w-72 h-72 bg-sky-200/40 dark:bg-sky-500/10 rounded-full blur-3xl pointer-events-none">
+                </div>
+
+                <div
+                    class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+                    <div>
+                        <span
+                            class="text-indigo-600 dark:text-sky-400 font-mono text-xs font-bold tracking-wider uppercase"><i
+                                class="fa-solid fa-meteor mr-1.5"></i> Live Astronomical Alert</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">What's
+                            Happening in the Sky Tonight</h2>
+                    </div>
+                    <div
+                        class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-700 dark:text-slate-300">
+                        Date: <span class="text-indigo-600 dark:text-sky-400 font-bold"
+                            id="current-date-display">Today</span> | Location: SLIET Longowal
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Featured Event Card -->
+                    <div
+                        class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-indigo-400 dark:hover:border-sky-400 transition-all">
+                        <div class="flex items-center gap-3 text-indigo-600 dark:text-sky-400 mb-2">
+                            <i class="fa-solid fa-meteor text-xl"></i>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100">Perseids Meteor Shower</h3>
+                        </div>
+                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Active Peak Event</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Peak visibility tonight!
+                            Best viewed after midnight towards the north-eastern sky away from light interference.</p>
+                    </div>
+
+                    <!-- Tonight Sky -->
+                    <div
+                        class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-indigo-400 dark:hover:border-sky-400 transition-all">
+                        <div class="flex items-center gap-3 text-purple-600 dark:text-purple-400 mb-2">
+                            <i class="fa-solid fa-cloud-moon text-xl"></i>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100">Tonight's Sky Condition</h3>
+                        </div>
+                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Observatory Forecast</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Clear skies expected with
+                            85% visibility index. Ideal for planetary imaging and nebula deep-sky tracking.</p>
+                    </div>
+
+                    <!-- Planet Watch -->
+                    <div
+                        class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-indigo-400 dark:hover:border-sky-400 transition-all">
+                        <div class="flex items-center gap-3 text-pink-600 dark:text-pink-400 mb-2">
+                            <i class="fa-solid fa-globe text-xl"></i>
+                            <h3 class="font-bold text-slate-900 dark:text-slate-100">Planet Watch</h3>
+                        </div>
+                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Visible Celestial Bodies
+                        </p>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Saturn with distinct ring
+                            systems visible in the late evening, followed by Jupiter rising in the early morning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section (Section 2) -->
+    <section id="about" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div
+                        class="inline-block px-3.5 py-1 rounded-md gradient-badge text-indigo-700 dark:text-sky-300 text-xs font-mono font-semibold uppercase tracking-widest">
+                        About Us
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">Who
+                        Are We?</h2>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
+                        The SLIET Antriksha Vigyan Club is a passionate collective of students, researchers, and
+                        astronomy enthusiasts at Sant Longowal Institute of Engineering and Technology. We bridge
+                        theoretical physics with practical space technology, driving curiosity through telescopes,
+                        satellite systems, computational astrophysics, and outreach programs.
+                    </p>
+
+                    <div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+                        <h3 class="text-xl font-bold text-indigo-600 dark:text-sky-400 mb-2">Vision & Objectives</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Our primary vision is to establish SLIET as a hub for student-led space innovations, foster
+                            hands-on learning with advanced optical instrumentation, enable satellite design projects,
+                            and inspire the upcoming generation to explore cosmic phenomena.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Club Head Profile Card -->
+                <div class="lg:col-span-5">
+                    <div
+                        class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden group hover:border-indigo-400 dark:hover:border-sky-400 transition-all border-2 border-indigo-500/30 shadow-xl">
+                        <div
+                            class="absolute -right-12 -top-12 w-40 h-40 bg-indigo-500/10 dark:bg-sky-500/10 rounded-full blur-2xl pointer-events-none">
+                        </div>
+                        <div class="flex items-center gap-5 mb-5">
+                            <img src="images/rk_mishra.png" alt="Dr. Ravi Kant Mishra"
+                                class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover object-top shadow-xl border-2 border-indigo-500/30 group-hover:scale-105 transition-transform">
+                            <div>
+                                <h4 class="text-2xl font-extrabold text-slate-900 dark:text-white">Dr. Ravi Kant Mishra
+                                </h4>
+                                <p
+                                    class="text-xs text-indigo-600 dark:text-sky-400 font-mono font-bold uppercase tracking-wider mt-0.5">
+                                    Faculty Head & Club Mentor</p>
+                                <span
+                                    class="inline-block mt-1 px-3 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950/70 text-indigo-700 dark:text-sky-300 text-xs font-semibold">Professor
+                                    & Dean (Alumni and Industrial Relations)</span>
+                            </div>
+                        </div>
+
+                        <!-- Area of Expertise -->
+                        <div class="mb-5">
+                            <h5
+                                class="text-xs font-mono font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
+                                Area of Expertise</h5>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-sky-300 font-mono text-xs font-semibold border border-indigo-200 dark:border-indigo-800"><i
+                                        class="fa-solid fa-chalkboard-user mr-1.5 text-indigo-500"></i> Teaching</span>
+                                <span
+                                    class="px-3 py-1 rounded-lg bg-sky-50 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 font-mono text-xs font-semibold border border-sky-200 dark:border-sky-800"><i
+                                        class="fa-solid fa-microscope mr-1.5 text-sky-500"></i> Research</span>
+                                <span
+                                    class="px-3 py-1 rounded-lg bg-purple-50 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 font-mono text-xs font-semibold border border-purple-200 dark:border-purple-800"><i
+                                        class="fa-solid fa-building-columns mr-1.5 text-purple-500"></i>
+                                    Administration</span>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                            Founded the SLIET Antriksha Vigyan Club, leading students innovation across space science,
+                            observational astrophysics, and institutional outreach.
+                        </p>
+                        <div
+                            class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                            <a href="https://rkmishra.com/" target="_blank" rel="noopener noreferrer"
+                                class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-xs shadow-md shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 transition-all">
+                                <span>Visit Personal Website</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Domains Section (Section 3) -->
+    <section id="domains" class="py-20 relative z-10 bg-slate-100/50 dark:bg-space-800/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">Specialized
+                    Wings</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Our Operational
+                    Domains</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">Explore the different sub-fields our club
+                    members specialize in and drive projects forward.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Domain 1 -->
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-binoculars"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Astronomy & Observation</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Hands-on night sky observations, celestial object tracking, planetary alignment sessions, and
+                        optical telescope maintenance.
+                    </p>
+                </div>
+
+                <!-- Domain 2 -->
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-atom"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Astrophysics & Space Science</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Theoretical research into stellar evolution, dark matter, cosmology, gravitational mechanics,
+                        and astrophysical calculations.
+                    </p>
+                </div>
+
+                <!-- Domain 3 -->
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Space Tech & Computing</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Software simulation for orbital trajectories, astronomical data analysis using Python, and
+                        specialized web tools.
+                    </p>
+                </div>
+
+                <!-- Domain 4 -->
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-600 dark:text-pink-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Satellite & Electronics</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        CanSat prototypes, ground station receiver setup, CubeSat communication modules, and embedded
+                        hardware systems.
+                    </p>
+                </div>
+
+                <!-- Domain 5 -->
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group md:col-span-2 lg:col-span-1">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-camera-retro"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Astrophotography & Outreach</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                        Capturing long-exposure deep space imagery, organizing campus workshops, school outreach, and
+                        public stargazing drives.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section (Section 4) -->
+    <section id="events" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span
+                class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">Club
+                Schedule</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1 mb-8">Events & Workshops
+            </h2>
+
+            <div
+                class="max-w-xl mx-auto glass-card p-10 rounded-3xl border-2 border-dashed border-indigo-300 dark:border-sky-400/40 relative overflow-hidden">
+                <div class="text-indigo-600 dark:text-sky-400 text-4xl mb-4 animate-bounce">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Events Coming Soon!</h3>
+                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                    Our executive committee is finalizing the schedule for upcoming stargazing drives, telescope optics
+                    workshops, and space tech sessions. Schedule details will be deployed here soon!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (Section 5) -->
+    <section id="projects" class="py-20 relative z-10 bg-slate-100/50 dark:bg-space-800/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span
+                class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">R&D
+                Lab</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1 mb-8">Projects Wing</h2>
+
+            <div
+                class="max-w-xl mx-auto glass-card p-10 rounded-3xl border-2 border-dashed border-indigo-300 dark:border-sky-400/40 relative overflow-hidden">
+                <div class="text-indigo-600 dark:text-sky-400 text-4xl mb-4 animate-bounce">
+                    <i class="fa-solid fa-rocket"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Projects Coming Soon</h3>
+                <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                    Our engineering teams are currently setting up baseline specs for CanSat payload prototypes and
+                    automated celestial tracking scripts. Project showcase links will be deployed here soon!
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Team Section (Section 6) -->
+    <section id="team" class="py-20 relative z-10 bg-slate-100/50 dark:bg-space-800/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span
+                    class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">Leadership
+                    & Mentors</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">Meet Our Team</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">The minds behind SLIET Antriksha Vigyan Club
+                    guiding our space research and operations.</p>
+            </div>
+
+            <!-- Team Category Navigation -->
+            <div class="flex justify-center mb-10 overflow-x-auto pb-2">
+                <div class="flex gap-2 p-1.5 glass-card rounded-xl">
+                    <button onclick="filterTeam('all')" id="team-btn-all"
+                        class="team-filter-btn active px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-md transition-all">All
+                        Members</button>
+                    <button onclick="filterTeam('faculty')" id="team-btn-faculty"
+                        class="team-filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Faculty
+                        Leadership</button>
+                    <button onclick="filterTeam('core')" id="team-btn-core"
+                        class="team-filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Core
+                        Team</button>
+                    <button onclick="filterTeam('domain')" id="team-btn-domain"
+                        class="team-filter-btn px-4 py-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Domain
+                        Leads</button>
+                </div>
+            </div>
+
+            <!-- Team Cards Grid -->
+            <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Faculty Lead -->
+                <div
+                    class="team-card faculty glass-card rounded-3xl p-8 sm:p-10 text-center hover:-translate-y-1 transition-all border-2 border-indigo-500/30 shadow-xl relative overflow-hidden group">
+                    <div
+                        class="absolute -right-8 -top-8 w-32 h-32 bg-indigo-500/10 dark:bg-sky-500/10 rounded-full blur-xl pointer-events-none">
+                    </div>
+                    <img src="images/rk_mishra.png" alt="Dr. Ravi Kant Mishra"
+                        class="w-32 h-32 mx-auto rounded-full object-cover object-top border-4 border-indigo-500/40 shadow-xl group-hover:scale-105 transition-transform mb-5">
+                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Dr. Ravi Kant Mishra</h3>
+                    <p
+                        class="text-xs text-indigo-600 dark:text-sky-400 font-mono font-bold uppercase mt-1 tracking-wider">
+                        Faculty Head & Club Mentor</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-1">Professor & Dean (Alumni
+                        and Industrial Relations)</p>
+
+                    <div class="mt-4 flex flex-wrap justify-center gap-1.5">
+                        <span
+                            class="px-2.5 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-sky-300 text-xxs font-mono font-semibold">Teaching</span>
+                        <span
+                            class="px-2.5 py-0.5 rounded-md bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xxs font-mono font-semibold">Research</span>
+                        <span
+                            class="px-2.5 py-0.5 rounded-md bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-xxs font-mono font-semibold">Administration</span>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
+                        <a href="https://rkmishra.com/" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-xs shadow-md hover:scale-105 transition-transform">
+                            <span>Dr. Mishra's Website</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xxs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Core Team Member 1 -->
+                <div
+                    class="team-card core glass-card rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-transform">
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-3xl font-bold text-white mb-4 shadow-lg shadow-purple-500/20">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Core Convener</h3>
+                    <p class="text-xs text-purple-600 dark:text-purple-400 font-mono font-semibold uppercase mt-1">Core
+                        Executive Team</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">Club Operations & Event
+                        Management</p>
+                </div>
+
+                <!-- Domain Lead Member -->
+                <div
+                    class="team-card domain glass-card rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-transform">
+                    <div
+                        class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center text-3xl font-bold text-white mb-4 shadow-lg shadow-sky-500/20">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Domain Coordinator</h3>
+                    <p class="text-xs text-teal-600 dark:text-teal-400 font-mono font-semibold uppercase mt-1">Domain
+                        Lead</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 mt-3 leading-relaxed">Astronomy Observation &
+                        Technical Lead</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Join Us Section (Section 7) -->
+    <section id="contact" class="py-20 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 glass-card rounded-3xl p-8 sm:p-12">
+
+                <div class="lg:col-span-6 space-y-6">
+                    <span
+                        class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">Get
+                        Connected</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Interested in Space?
+                        Join Us!</h2>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Whether you are a beginner curious about night sky constellations or an engineering student
+                        looking to build orbital hardware models, SLIET Antriksha Vigyan Club welcomes you!
+                    </p>
+
+                    <div class="pt-4 space-y-4 text-sm">
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-slate-800 flex items-center justify-center text-indigo-600 dark:text-sky-400 border border-indigo-100 dark:border-slate-700">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Official Email</p>
+                                <a href="mailto:antriksha@sliet.ac.in"
+                                    class="font-mono text-slate-900 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-sky-400 font-semibold">antriksha@sliet.ac.in</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-slate-800 flex items-center justify-center text-purple-600 dark:text-purple-400 border border-purple-100 dark:border-slate-700">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Instagram Handle</p>
+                                <a href="https://instagram.com" target="_blank"
+                                    class="font-mono text-slate-900 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-400 font-semibold">@sliet_antriksha_club</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3.5">
+                            <div
+                                class="w-10 h-10 rounded-xl bg-pink-50 dark:bg-slate-800 flex items-center justify-center text-pink-600 dark:text-pink-400 border border-pink-100 dark:border-slate-700">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-medium">Campus Location</p>
+                                <p class="font-mono text-slate-900 dark:text-slate-200 font-semibold">SLIET Campus,
+                                    Longowal, Sangrur, Punjab</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Forms Application Card -->
+                <div
+                    class="lg:col-span-6 flex flex-col justify-center items-center bg-white/80 dark:bg-slate-800/60 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 text-center shadow-md">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-slate-800/90 border border-indigo-100 dark:border-slate-700 flex items-center justify-center mb-4 shadow-md">
+                        <img src="images/google_forms.svg" alt="Google Forms Logo" class="w-10 h-10 object-contain">
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">Join Antriksha Space Club
+                    </h3>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 mb-6 max-w-md leading-relaxed">
+                        Complete your official student registration via our Google Form to apply for membership, select
+                        your domain preferences, and receive event alerts.
+                    </p>
+                    <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer"
+                        class="join-form-link w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold hover:scale-105 transition-transform shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2.5">
+                        <img src="images/google_forms.svg" alt="Google Forms" class="w-5 h-5 object-contain">
+                        <span>Fill Google Form Application</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="py-8 border-t border-slate-200 dark:border-slate-800 relative z-10 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+        <p>© <span id="current-year">2026</span> SLIET Antriksha Vigyan Club. All rights reserved.</p>
+    </footer>
+
+    <!-- Single Google Form Application Modal -->
+    <div id="join-modal"
+        class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-900/60 dark:bg-space-900/80 backdrop-blur-md p-4">
+        <div
+            class="glass-card max-w-lg w-full rounded-3xl border border-indigo-200 dark:border-sky-400/40 p-8 relative text-center">
+            <button onclick="closeJoinModal()"
+                class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div
+                class="w-16 h-16 mx-auto rounded-2xl bg-indigo-50 dark:bg-slate-800/90 border border-indigo-100 dark:border-slate-700 flex items-center justify-center mb-4 shadow-md">
+                <img src="images/google_forms.svg" alt="Google Forms Logo" class="w-10 h-10 object-contain">
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Google Form Registration</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+                Click below to open the official SLIET Antriksha Vigyan Club Google Form in a new tab. Submit your
+                student details and domain preferences directly.
+            </p>
+
+            <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" onclick="closeJoinModal()"
+                class="inline-flex items-center justify-center gap-2.5 w-full py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/25 hover:scale-[1.02] transition-transform">
+                <img src="images/google_forms.svg" alt="Google Forms" class="w-5 h-5 object-contain">
+                <span>Proceed to Google Form</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Configuration & External JavaScript Application Logic -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

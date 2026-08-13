@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+    <!-- Row 1 -->
+    <!-- Ring Circle Left -->
+    <circle cx="25" cy="22" r="14" fill="none" stroke="#6366f1" stroke-width="7" />
+    <!-- Top Pill Right -->
+    <rect x="44" y="10" width="46" height="24" rx="12" fill="url(#grad1)" />
+    <rect x="52" y="18" width="30" height="8" rx="4" fill="#ffffff" />
+
+    <!-- Row 2 -->
+    <!-- Solid Circle Left -->
+    <circle cx="25" cy="50" r="14" fill="#4f46e5" />
+    <!-- Middle Pill Right -->
+    <rect x="44" y="38" width="46" height="24" rx="12" fill="#4f46e5" />
+
+    <!-- Row 3 -->
+    <!-- Soft Circle Left -->
+    <circle cx="25" cy="78" r="14" fill="#a5b4fc" />
+    <!-- Bottom Pill Right -->
+    <rect x="44" y="66" width="46" height="24" rx="12" fill="#a5b4fc" />
+
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#818cf8" />
+            <stop offset="100%" stop-color="#6366f1" />
+        </linearGradient>
+    </defs>
+</svg>
