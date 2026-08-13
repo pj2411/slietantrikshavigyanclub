@@ -17,7 +17,7 @@
     <meta property="og:title" content="SLIET Antriksha Vigyan Club | Space & Astronomy">
     <meta property="og:description"
         content="Exploring the Universe, Inspiring Curiosity, Building the Future. Official Astronomy & Space Research Club of SLIET Longowal.">
-    <meta property="og:image" content="https://slietantriksha.ac.in/images/favicon.svg">
+    <meta property="og:image" content="https://slietantriksha.ac.in/images/logo.png">
 
     <!-- Twitter Card SEO -->
     <meta name="twitter:card" content="summary_large_image">
@@ -28,7 +28,7 @@
     <title>SLIET Antriksha Vigyan Club | Space & Astronomy</title>
 
     <!-- Favicon & PWA Manifest -->
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="manifest" href="manifest.json">
 
     <!-- Tailwind CSS CDN -->
@@ -50,7 +50,7 @@
       "name": "SLIET Antriksha Vigyan Club",
       "alternateName": "SLIET Space Club",
       "url": "https://slietantriksha.ac.in",
-      "logo": "https://slietantriksha.ac.in/images/favicon.svg",
+      "logo": "https://slietantriksha.ac.in/images/logo.png",
       "description": "Official Space, Astronomy, and Satellite Technology Student Club at Sant Longowal Institute of Engineering & Technology.",
       "address": {
         "@type": "PostalAddress",
@@ -124,8 +124,8 @@
     <nav class="fixed top-0 left-0 w-full z-50 glass-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex items-center justify-between">
             <a href="#home" class="flex items-center gap-3.5 group shrink-0">
-                <img src="images/logo.svg" alt="SLIET Logo"
-                    class="w-12 h-12 object-contain drop-shadow-md group-hover:scale-105 transition-transform">
+                <img src="images/logo.png" alt="SLIET Antriksha Vigyan Club Logo"
+                    class="w-12 h-12 object-cover rounded-full shadow-md group-hover:scale-105 transition-transform ring-2 ring-indigo-500/30 dark:ring-sky-400/40">
                 <div>
                     <span
                         class="font-extrabold text-lg sm:text-xl tracking-wider block leading-none dark:text-white text-slate-900">Antriksha
@@ -206,7 +206,7 @@
             class="absolute bottom-20 right-12 w-96 h-96 rounded-full bg-orange-100/50 dark:bg-sky-500/20 blur-3xl animate-float-medium pointer-events-none">
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 reveal-on-scroll">
             <div
                 class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full gradient-badge text-amber-800 dark:text-amber-300 text-xs font-mono font-semibold uppercase tracking-widest mb-6">
                 <span class="w-2 h-2 rounded-full bg-amber-600 dark:bg-amber-400 animate-ping"></span>
@@ -214,10 +214,9 @@
             </div>
 
             <h1
-                class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-slate-900 dark:text-white">
+                class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-3 leading-tight text-slate-900 dark:text-white">
                 SLIET Antriksha Vigyan Club
-                <span class="block gradient-text mt-3">Exploring the Universe, Inspiring Curiosity, Building the
-                    Future</span>
+                <span class="block text-xl sm:text-2xl md:text-3xl font-bold gradient-text mt-3 tracking-normal">Exploring the Universe, Inspiring Curiosity, Building the Future</span>
             </h1>
 
             <p
@@ -241,65 +240,93 @@
     </section>
 
     <!-- Sky Watch: What's Happening in Sky (Live Alert Widget) -->
-    <section id="sky-watch" class="py-16 relative z-10">
+    <section id="sky-watch" class="py-24 sm:py-28 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="p-8 sm:p-10 rounded-3xl glass-card relative overflow-hidden">
+            <div class="p-10 sm:p-14 lg:p-16 rounded-3xl glass-card relative overflow-hidden reveal-on-scroll border-2 border-indigo-500/30 dark:border-sky-400/40 shadow-2xl">
                 <div
-                    class="absolute -right-10 -bottom-10 w-72 h-72 bg-sky-200/40 dark:bg-sky-500/10 rounded-full blur-3xl pointer-events-none">
+                    class="absolute -right-16 -bottom-16 w-96 h-96 bg-indigo-300/30 dark:bg-sky-500/15 rounded-full blur-3xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute -left-16 -top-16 w-80 h-80 bg-amber-300/20 dark:bg-purple-600/15 rounded-full blur-3xl pointer-events-none">
                 </div>
 
                 <div
-                    class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">
+                    class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10 border-b border-slate-200 dark:border-slate-800 pb-8 relative z-10">
                     <div>
                         <span
-                            class="text-indigo-600 dark:text-sky-400 font-mono text-xs font-bold tracking-wider uppercase"><i
-                                class="fa-solid fa-meteor mr-1.5"></i> Live Astronomical Alert</span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">What's
+                            class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full gradient-badge text-indigo-700 dark:text-sky-300 font-mono text-xs font-bold tracking-wider uppercase mb-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600 dark:bg-sky-400 animate-ping"></span>
+                            <i class="fa-solid fa-meteor"></i> Live Astronomical Alert
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">What's
                             Happening in the Sky Tonight</h2>
                     </div>
                     <div
-                        class="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono text-slate-700 dark:text-slate-300">
-                        Date: <span class="text-indigo-600 dark:text-sky-400 font-bold"
-                            id="current-date-display">Today</span> | Location: SLIET Longowal
+                        class="px-5 py-3 rounded-2xl bg-white/80 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-mono text-slate-700 dark:text-slate-200 shadow-md flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-indigo-600 dark:text-sky-400"></i>
+                        <span>Date: <strong class="text-indigo-600 dark:text-sky-400" id="current-date-display">Today</strong> | SLIET Longowal (30.23°N)</span>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
                     <!-- Featured Event Card -->
                     <div
-                        class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-indigo-400 dark:hover:border-sky-400 transition-all">
-                        <div class="flex items-center gap-3 text-indigo-600 dark:text-sky-400 mb-2">
-                            <i class="fa-solid fa-meteor text-xl"></i>
-                            <h3 class="font-bold text-slate-900 dark:text-slate-100">Perseids Meteor Shower</h3>
+                        class="p-7 sm:p-8 rounded-3xl bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 hover:border-indigo-500 dark:hover:border-sky-400 transition-all hover:scale-[1.02] shadow-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3.5 text-indigo-600 dark:text-sky-400 mb-3">
+                                <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-slate-800 flex items-center justify-center text-xl border border-indigo-100 dark:border-slate-700 shadow-sm">
+                                    <i class="fa-solid fa-meteor" id="sky-event-icon"></i>
+                                </div>
+                                <h3 class="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-slate-100 leading-tight" id="sky-event-title">Perseids Meteor Shower</h3>
+                            </div>
+                            <span class="inline-block px-3 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-sky-300 text-xs font-mono font-bold uppercase tracking-wider mb-4" id="sky-event-badge">Active Peak Event</span>
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed" id="sky-event-desc">
+                                Peak visibility tonight! Best viewed after midnight towards the north-eastern sky away from light interference.
+                            </p>
                         </div>
-                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Active Peak Event</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Peak visibility tonight!
-                            Best viewed after midnight towards the north-eastern sky away from light interference.</p>
+                        <div class="mt-6 pt-4 border-t border-slate-200/80 dark:border-slate-700/60 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                            <i class="fa-regular fa-clock mr-1 text-indigo-500"></i> Auto-updated for today
+                        </div>
                     </div>
 
-                    <!-- Tonight Sky -->
+                    <!-- Tonight Sky / Moon Phase Card -->
                     <div
-                        class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-indigo-400 dark:hover:border-sky-400 transition-all">
-                        <div class="flex items-center gap-3 text-purple-600 dark:text-purple-400 mb-2">
-                            <i class="fa-solid fa-cloud-moon text-xl"></i>
-                            <h3 class="font-bold text-slate-900 dark:text-slate-100">Tonight's Sky Condition</h3>
+                        class="p-7 sm:p-8 rounded-3xl bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 hover:border-purple-500 dark:hover:border-purple-400 transition-all hover:scale-[1.02] shadow-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3.5 text-purple-600 dark:text-purple-400 mb-3">
+                                <div class="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-slate-800 flex items-center justify-center text-xl border border-purple-100 dark:border-slate-700 shadow-sm">
+                                    <i class="fa-solid fa-moon" id="sky-moon-icon"></i>
+                                </div>
+                                <h3 class="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-slate-100 leading-tight" id="sky-moon-title">Tonight's Moon Phase</h3>
+                            </div>
+                            <span class="inline-block px-3 py-1 rounded-md bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 text-xs font-mono font-bold uppercase tracking-wider mb-4" id="sky-moon-badge">Observatory Forecast</span>
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed" id="sky-moon-desc">
+                                Clear skies expected with ideal lunar crater visibility and high atmospheric transparency.
+                            </p>
                         </div>
-                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Observatory Forecast</p>
-                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Clear skies expected with
-                            85% visibility index. Ideal for planetary imaging and nebula deep-sky tracking.</p>
+                        <div class="mt-6 pt-4 border-t border-slate-200/80 dark:border-slate-700/60 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                            <i class="fa-solid fa-eye mr-1 text-purple-500"></i> Astronomical Illumination
+                        </div>
                     </div>
 
-                    <!-- Planet Watch -->
+                    <!-- Planet Watch Card -->
                     <div
-                        class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 hover:border-indigo-400 dark:hover:border-sky-400 transition-all">
-                        <div class="flex items-center gap-3 text-pink-600 dark:text-pink-400 mb-2">
-                            <i class="fa-solid fa-globe text-xl"></i>
-                            <h3 class="font-bold text-slate-900 dark:text-slate-100">Planet Watch</h3>
+                        class="p-7 sm:p-8 rounded-3xl bg-white/80 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/80 hover:border-pink-500 dark:hover:border-pink-400 transition-all hover:scale-[1.02] shadow-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3.5 text-pink-600 dark:text-pink-400 mb-3">
+                                <div class="w-12 h-12 rounded-2xl bg-pink-50 dark:bg-slate-800 flex items-center justify-center text-xl border border-pink-100 dark:border-slate-700 shadow-sm">
+                                    <i class="fa-solid fa-globe" id="sky-planet-icon"></i>
+                                </div>
+                                <h3 class="font-extrabold text-lg sm:text-xl text-slate-900 dark:text-slate-100 leading-tight" id="sky-planet-title">Planet Watch</h3>
+                            </div>
+                            <span class="inline-block px-3 py-1 rounded-md bg-pink-100 dark:bg-pink-950/80 text-pink-700 dark:text-pink-300 text-xs font-mono font-bold uppercase tracking-wider mb-4" id="sky-planet-badge">Visible Celestial Bodies</span>
+                            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed" id="sky-planet-desc">
+                                Saturn with distinct ring systems visible in the late evening, followed by Jupiter rising in the early morning sky.
+                            </p>
                         </div>
-                        <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">Visible Celestial Bodies
-                        </p>
-                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Saturn with distinct ring
-                            systems visible in the late evening, followed by Jupiter rising in the early morning.</p>
+                        <div class="mt-6 pt-4 border-t border-slate-200/80 dark:border-slate-700/60 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                            <i class="fa-solid fa-compass mr-1 text-pink-500"></i> SLIET Coordinates (30°N)
+                        </div>
                     </div>
                 </div>
             </div>
@@ -312,7 +339,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
                 <!-- Left Text Content -->
-                <div class="lg:col-span-7 space-y-6">
+                <div class="lg:col-span-7 space-y-6 reveal-on-scroll">
                     <div
                         class="inline-block px-3.5 py-1 rounded-md gradient-badge text-indigo-700 dark:text-sky-300 text-xs font-mono font-semibold uppercase tracking-widest">
                         About Us
@@ -337,7 +364,7 @@
                 </div>
 
                 <!-- Club Head Profile Card -->
-                <div class="lg:col-span-5">
+                <div class="lg:col-span-5 reveal-on-scroll delay-200">
                     <div
                         class="glass-card rounded-3xl p-8 sm:p-10 relative overflow-hidden group hover:border-indigo-400 dark:hover:border-sky-400 transition-all border-2 border-indigo-500/30 shadow-xl">
                         <div
@@ -385,7 +412,7 @@
                             class="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                             <a href="https://rkmishra.com/" target="_blank" rel="noopener noreferrer"
                                 class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-xs shadow-md shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-105 transition-all">
-                                <span>Visit Personal Website</span>
+                                <span>Visit Portfolio</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                             </a>
                         </div>
@@ -399,7 +426,7 @@
     <!-- Domains Section (Section 3) -->
     <section id="domains" class="py-20 relative z-10 bg-slate-100/50 dark:bg-space-800/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
                 <span
                     class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">Specialized
                     Wings</span>
@@ -411,7 +438,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Domain 1 -->
-                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group reveal-on-scroll delay-100">
                     <div
                         class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-600 dark:text-sky-400 text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-binoculars"></i>
@@ -424,7 +451,7 @@
                 </div>
 
                 <!-- Domain 2 -->
-                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group reveal-on-scroll delay-200">
                     <div
                         class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-600 dark:text-purple-400 text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-atom"></i>
@@ -437,7 +464,7 @@
                 </div>
 
                 <!-- Domain 3 -->
-                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group reveal-on-scroll delay-300">
                     <div
                         class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-laptop-code"></i>
@@ -450,7 +477,7 @@
                 </div>
 
                 <!-- Domain 4 -->
-                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group">
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group reveal-on-scroll delay-100">
                     <div
                         class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-600 dark:text-pink-400 text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-microchip"></i>
@@ -463,7 +490,7 @@
                 </div>
 
                 <!-- Domain 5 -->
-                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group md:col-span-2 lg:col-span-1">
+                <div class="glass-card p-6 rounded-2xl hover:-translate-y-2 group md:col-span-2 lg:col-span-1 reveal-on-scroll delay-200">
                     <div
                         class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-camera-retro"></i>
@@ -488,7 +515,7 @@
             </h2>
 
             <div
-                class="max-w-xl mx-auto glass-card p-10 rounded-3xl border-2 border-dashed border-indigo-300 dark:border-sky-400/40 relative overflow-hidden">
+                class="max-w-xl mx-auto glass-card p-10 rounded-3xl border-2 border-dashed border-indigo-300 dark:border-sky-400/40 relative overflow-hidden reveal-on-scroll">
                 <div class="text-indigo-600 dark:text-sky-400 text-4xl mb-4 animate-bounce">
                     <i class="fa-regular fa-calendar-check"></i>
                 </div>
@@ -510,7 +537,7 @@
             <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1 mb-8">Projects Wing</h2>
 
             <div
-                class="max-w-xl mx-auto glass-card p-10 rounded-3xl border-2 border-dashed border-indigo-300 dark:border-sky-400/40 relative overflow-hidden">
+                class="max-w-xl mx-auto glass-card p-10 rounded-3xl border-2 border-dashed border-indigo-300 dark:border-sky-400/40 relative overflow-hidden reveal-on-scroll">
                 <div class="text-indigo-600 dark:text-sky-400 text-4xl mb-4 animate-bounce">
                     <i class="fa-solid fa-rocket"></i>
                 </div>
@@ -528,7 +555,7 @@
     <!-- Team Section (Section 6) -->
     <section id="team" class="py-20 relative z-10 bg-slate-100/50 dark:bg-space-800/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
                 <span
                     class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">Leadership
                     & Mentors</span>
@@ -559,7 +586,7 @@
             <div id="team-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Faculty Lead -->
                 <div
-                    class="team-card faculty glass-card rounded-3xl p-8 sm:p-10 text-center hover:-translate-y-1 transition-all border-2 border-indigo-500/30 shadow-xl relative overflow-hidden group">
+                    class="team-card faculty glass-card rounded-3xl p-8 sm:p-10 text-center hover:-translate-y-1 transition-all border-2 border-indigo-500/30 shadow-xl relative overflow-hidden group reveal-on-scroll delay-100">
                     <div
                         class="absolute -right-8 -top-8 w-32 h-32 bg-indigo-500/10 dark:bg-sky-500/10 rounded-full blur-xl pointer-events-none">
                     </div>
@@ -584,7 +611,7 @@
                     <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800">
                         <a href="https://rkmishra.com/" target="_blank" rel="noopener noreferrer"
                             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-xs shadow-md hover:scale-105 transition-transform">
-                            <span>Dr. Mishra's Website</span>
+                            <span>Visit Portfolio</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-xxs"></i>
                         </a>
                     </div>
@@ -592,7 +619,7 @@
 
                 <!-- Core Team Member 1 -->
                 <div
-                    class="team-card core glass-card rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-transform">
+                    class="team-card core glass-card rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-transform reveal-on-scroll delay-200">
                     <div
                         class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-3xl font-bold text-white mb-4 shadow-lg shadow-purple-500/20">
                         <i class="fa-solid fa-user-gear"></i>
@@ -606,7 +633,7 @@
 
                 <!-- Domain Lead Member -->
                 <div
-                    class="team-card domain glass-card rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-transform">
+                    class="team-card domain glass-card rounded-2xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-transform reveal-on-scroll delay-300">
                     <div
                         class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-sky-500 to-teal-400 flex items-center justify-center text-3xl font-bold text-white mb-4 shadow-lg shadow-sky-500/20">
                         <i class="fa-solid fa-microscope"></i>
@@ -626,7 +653,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 glass-card rounded-3xl p-8 sm:p-12">
 
-                <div class="lg:col-span-6 space-y-6">
+                <div class="lg:col-span-6 space-y-6 reveal-on-scroll">
                     <span
                         class="text-indigo-600 dark:text-sky-400 text-xs font-mono font-semibold uppercase tracking-widest">Get
                         Connected</span>
@@ -678,7 +705,7 @@
 
                 <!-- Google Forms Application Card -->
                 <div
-                    class="lg:col-span-6 flex flex-col justify-center items-center bg-white/80 dark:bg-slate-800/60 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 text-center shadow-md">
+                    class="lg:col-span-6 flex flex-col justify-center items-center bg-white/80 dark:bg-slate-800/60 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 text-center shadow-md reveal-on-scroll delay-200">
                     <div
                         class="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-slate-800/90 border border-indigo-100 dark:border-slate-700 flex items-center justify-center mb-4 shadow-md">
                         <img src="images/google_forms.svg" alt="Google Forms Logo" class="w-10 h-10 object-contain">

@@ -4,14 +4,43 @@ This simple guide will help any beginner, student executive, or web manager upda
 
 ---
 
-## 📷 1. How Image Files Work & How to Update Photos
+## 🎨 1. How to Update the Website Logo & Favicon
 
-All website images are stored neatly inside the **`images/`** folder:
-- **`images/logo.svg`**: Top-left navbar atomic club logo.
-- **`images/favicon.svg`**: Browser tab icon.
-- **`images/rk_mishra.png`**: Photo of Dr. Ravi Kant Mishra displayed on the website.
+All website graphics are stored in the **`images/`** folder:
+- **`images/logo.png`**: Top-left navigation bar club logo.
+- **`images/favicon.png`**: Small icon displayed in browser tabs and bookmarks.
+- **`images/rk_mishra.png`**: Faculty Head photo.
+- **`images/google_forms.svg`**: Icon used in modal dialogs.
 
-### 🌟 Method A: Update Photo WITHOUT Changing Any Code (Easiest!)
+### 🌟 Method A: Update Logo WITHOUT Changing Any Code (Recommended)
+1. Save your new logo as a PNG image named **`logo.png`**.
+2. Save a square (1:1 ratio) version of your logo named **`favicon.png`** (192x192 px recommended).
+3. Upload both into the **`images/`** folder (overwriting the old `images/logo.png` and `images/favicon.png`).
+4. Refresh your browser — the website logo and browser tab icon will automatically update!
+
+### 🛠️ Method B: Update Logo if Using a New Filename or Format (e.g., `new_logo.svg`)
+If your new logo is named differently (e.g., **`images/club_logo.png`** or **`images/logo.svg`**):
+1. Upload the file into the **`images/`** folder.
+2. Open **`index.html`** in any code editor.
+3. Press `Ctrl + F` (or `Cmd + F`) and search for **`images/logo.png`**.
+4. Replace `images/logo.png` with your new image path (e.g., `images/club_logo.png`):
+   - **Navbar Logo** (around line 125):
+     ```html
+     <img src="images/club_logo.png" alt="SLIET Antriksha Vigyan Club Logo" class="...">
+     ```
+   - **SEO Metadata & Structured Data** (around line 20 and line 50):
+     ```html
+     <meta property="og:image" content="https://slietantriksha.ac.in/images/club_logo.png">
+     ```
+     ```json
+     "logo": "https://slietantriksha.ac.in/images/club_logo.png"
+     ```
+
+---
+
+## 📷 2. How to Update Faculty & Team Photos
+
+### 🌟 Method A: Update Photo WITHOUT Changing Any Code
 1. Take your new photo and name it **`rk_mishra.png`**.
 2. Save/Upload it into the **`images/`** folder (overwriting the old `images/rk_mishra.png`).
 3. Done! The website will automatically display the new picture without editing any code.
@@ -28,7 +57,7 @@ If your new photo is named **`new_faculty.jpg`**:
 
 ---
 
-## 📌 2. How to Update Google Form Links (Recruitment vs Events)
+## 📌 3. How to Update Google Form Links (Recruitment vs Events)
 
 To prevent confusion and keep responses organized, the website uses **two separate Google Form links** in `config.js`:
 
@@ -49,7 +78,7 @@ To prevent confusion and keep responses organized, the website uses **two separa
 
 ---
 
-## 📅 3. How to Add Active Events in Events & Workshops
+## 📅 4. How to Add Active Events in Events & Workshops
 
 The **Events & Workshops** section currently features a centered **Events Coming Soon!** banner. When an upcoming stargazing session or workshop is announced:
 
@@ -78,7 +107,7 @@ The **Events & Workshops** section currently features a centered **Events Coming
 
 ---
 
-## 🚀 4. How to Add & Showcase Projects in R&D Lab
+## 🚀 5. How to Add & Showcase Projects in R&D Lab
 
 To add a project card under `<section id="projects">`:
 1. Open **`index.html`** and search for `<section id="projects">`.
@@ -100,7 +129,7 @@ To add a project card under `<section id="projects">`:
 
 ---
 
-## 👥 5. How to Add a New Team Member Card
+## 👥 6. How to Add a New Team Member Card
 
 In **`index.html`**, under `<section id="team">`:
 Copy and paste this clean team member template block:
@@ -117,7 +146,7 @@ Copy and paste this clean team member template block:
 
 ---
 
-## 🌐 6. How to Upload Changes to GoDaddy
+## 🌐 7. How to Upload Changes to Web Hosting (cPanel / Server)
 
 1. Log into your **GoDaddy cPanel Account**.
 2. Open **File Manager** -> **`public_html`**.

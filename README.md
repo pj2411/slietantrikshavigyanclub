@@ -24,7 +24,7 @@ Redesigned with a modern **Light Mode UI**, an interactive starfield particle ca
 
 ```text
 ├── index.html       # Main website structure & UI
-├── favicon.svg      # Browser favicon icon
+├── images/          # Website graphics (logo.png, favicon.png, faculty photos)
 ├── manifest.json    # Web application manifest
 ├── robots.txt       # Search engine crawler directives
 ├── sitemap.xml      # Search engine index sitemap
