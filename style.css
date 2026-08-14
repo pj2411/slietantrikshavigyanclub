@@ -84,6 +84,11 @@ html.dark .header-glow {
 /* Dark Mode Overrides */
 html.dark body {
     background-color: #060814;
+    background-image: 
+        radial-gradient(at 15% 15%, rgba(79, 70, 229, 0.12) 0px, transparent 50%),
+        radial-gradient(at 85% 85%, rgba(14, 165, 233, 0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(124, 58, 237, 0.08) 0px, transparent 60%);
+    background-attachment: fixed;
     color: #f1f5f9;
 }
 html.dark .glass-card {
@@ -93,8 +98,8 @@ html.dark .glass-card {
 }
 html.dark .glass-nav {
     background: rgba(6, 8, 20, 0.85);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 html.dark .gradient-text {
     background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
