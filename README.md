@@ -1,6 +1,6 @@
-# SLIET Antriksha Vigyan Club
+# SLIET Antriksha Vigyan Society
 
-> Official space and astronomy club website for Sant Longowal Institute of Engineering and Technology (SLIET). 
+> Official space and astronomy society website for Sant Longowal Institute of Engineering and Technology (SLIET). 
 
 Redesigned with a modern **Light Mode UI**, an interactive starfield particle canvas, dynamic events, sky watch live alerts, team filtering, and responsive controls across all devices.
 

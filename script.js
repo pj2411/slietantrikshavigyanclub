@@ -1,5 +1,5 @@
 /* ====================================================================
-   SLIET Antriksha Vigyan Club - Application Logic & Starfield Canvas
+   SLIET Antriksha Vigyan Society - Application Logic & Starfield Canvas
    ==================================================================== */
 
 // Set Current Date & Year dynamically + Sync Google Form URL from config.js

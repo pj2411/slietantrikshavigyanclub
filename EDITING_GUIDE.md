@@ -1,4 +1,4 @@
-# 🚀 SLIET Antriksha Vigyan Club - Beginner Editing & Maintenance Guide
+# 🚀 SLIET Antriksha Vigyan Society - Beginner Editing & Maintenance Guide
 
 This simple guide will help any beginner, student executive, or web manager update the website text, Google Form links, team photos, events, and projects in under **2 minutes**.
 
@@ -7,7 +7,7 @@ This simple guide will help any beginner, student executive, or web manager upda
 ## 🎨 1. How to Update the Website Logo & Favicon
 
 All website graphics are stored in the **`images/`** folder:
-- **`images/logo.png`**: Top-left navigation bar club logo.
+- **`images/logo.png`**: Top-left navigation bar society logo.
 - **`images/favicon.png`**: Small icon displayed in browser tabs and bookmarks.
 - **`images/rk_mishra.png`**: Faculty Head photo.
 - **`images/google_forms.svg`**: Icon used in modal dialogs.
@@ -26,7 +26,7 @@ If your new logo is named differently (e.g., **`images/club_logo.png`** or **`im
 4. Replace `images/logo.png` with your new image path (e.g., `images/club_logo.png`):
    - **Navbar Logo** (around line 125):
      ```html
-     <img src="images/club_logo.png" alt="SLIET Antriksha Vigyan Club Logo" class="...">
+     <img src="images/club_logo.png" alt="SLIET Antriksha Vigyan Society Logo" class="...">
      ```
    - **SEO Metadata & Structured Data** (around line 20 and line 50):
      ```html
@@ -78,75 +78,149 @@ To prevent confusion and keep responses organized, the website uses **two separa
 
 ---
 
-## 📅 4. How to Add Active Events in Events & Workshops
+## 📅 4. How to Edit & Add Events in Events & Workshops
 
-The **Events & Workshops** section currently features a centered **Events Coming Soon!** banner. When an upcoming stargazing session or workshop is announced:
+All website events are managed inside **`index.html`** under `<section id="events">`.
 
-1. Open **`index.html`** and find `<section id="events">`.
-2. Replace or add this active Event Card snippet inside:
+### ✏️ Method A: How to Edit the Current Featured Flagship Event (e.g. National Space Day)
+1. Open **`index.html`** in any code editor.
+2. Press `Ctrl + F` (or `Cmd + F`) and search for `<section id="events">`.
+3. Locate and edit the text fields directly:
+   - **Event Title**: Edit `<h3 class="...">NATIONAL SPACE DAY 2026</h3>`.
+   - **Theme Line**: Edit `<p class="...">Theme: “...”</p>`.
+   - **Date, Time & Venue**: Update the values inside the date/time/venue pill tags:
+     - Date: `17 August 2026`
+     - Time: `5:00 PM Onwards`
+     - Venue: `T&P Block, SLIET`
+   - **Competitions & Tracks**: Update eligibility, team size, presentation rules, and topics inside the competition cards (`INNOVATION QUEST` and `QUIZ COMPETITION`).
+   - **ISRO Certificate & Souvenir Perks**: Edit the perks banner at the bottom of the event card.
+
+---
+
+### ➕ Method B: How to Add a New Standard Workshop / Stargazing Event Card
+To add a new event card under `<section id="events">`:
+1. Open **`index.html`** under `<section id="events">`.
+2. Copy and paste this clean Event Card snippet inside the events container:
 
 ```html
-<!-- Active Event Card Template -->
-<div class="glass-card p-6 sm:p-8 rounded-2xl border-l-4 border-l-indigo-600 flex flex-col justify-between">
+<!-- New Event Card Template -->
+<div class="glass-card p-6 sm:p-8 rounded-2xl border-l-4 border-l-indigo-600 flex flex-col justify-between shadow-md">
     <div>
         <div class="flex items-center justify-between mb-3">
-            <span class="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-bold">NEXT SESSION</span>
-            <span class="text-xs font-mono text-slate-500 dark:text-slate-400"><i class="fa-regular fa-calendar mr-1"></i> Upcoming</span>
+            <span class="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-sky-300 text-xs font-mono font-bold uppercase">WORKSHOP / SESSION</span>
+            <span class="text-xs font-mono text-slate-500 dark:text-slate-400"><i class="fa-regular fa-calendar mr-1"></i> Date Here</span>
         </div>
-        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Event Title Here</h3>
-        <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed">
-            Write your event description and schedule details here.
+        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Event Title Here</h4>
+        <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed font-mono">
+            Write your event description, eligibility, and rules here.
         </p>
     </div>
     <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-        <span class="text-xs text-slate-500 dark:text-slate-400"><i class="fa-solid fa-location-dot text-indigo-600 dark:text-sky-400 mr-1"></i> Venue / Location</span>
-        <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer" class="event-form-link text-xs text-indigo-600 dark:text-sky-400 font-bold hover:underline">Register via Event Form &rarr;</a>
+        <span class="text-xs font-mono text-slate-500 dark:text-slate-400"><i class="fa-solid fa-location-dot text-indigo-600 dark:text-sky-400 mr-1"></i> Venue / Location</span>
+        <button onclick="openJoinModal()" class="text-xs text-indigo-600 dark:text-sky-400 font-bold hover:underline">Register &rarr;</button>
     </div>
 </div>
 ```
 
 ---
 
-## 🚀 5. How to Add & Showcase Projects in R&D Lab
+## 👥 5. How to Add & Edit Team Members (Leadership & Mentorship Network)
 
-To add a project card under `<section id="projects">`:
-1. Open **`index.html`** and search for `<section id="projects">`.
-2. Add this Project Card snippet inside:
+In **`index.html`**, under `<section id="team">`, team members are organized into 3 distinct tiers:
+
+1. **Faculty & Founder** (`class="team-card faculty"`)
+2. **Distinguished Alumni Scholars** (`class="team-card alumni"`) — Ph.D. Degree Awarded
+3. **Current Ph.D. Research Scholars** (`class="team-card student"`) — Pursuing Ph.D. / CSIR & GATE Qualified
+
+### 📸 Photos Folder
+All cropped scholar photos are stored in the **`images/team/`** directory:
+- `images/team/amritbir_singh.png`
+- `images/team/arunesh_pandey.png`
+- `images/team/chanchal_chawla.png`
+- `images/team/avtar_chand.png`
+- `images/team/heena_dua.png`
+- `images/team/rahul_sharma.png`
+- `images/team/navya_jain.png`
+
+### ➕ Template: Adding a New Scholar Card
+Copy and paste this card snippet inside the `alumni` grid or `student` grid under `<section id="team">`:
 
 ```html
-<!-- New Project Showcase Card -->
-<div class="glass-card p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-indigo-400 transition-all text-left">
-    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-sky-400 text-xl mb-4">
-        <i class="fa-solid fa-satellite"></i>
+<!-- New Scholar Card -->
+<div class="glass-card rounded-2xl p-6 hover:-translate-y-1 transition-all border border-slate-200 dark:border-slate-700/80 shadow-md flex flex-col justify-between">
+    <div class="text-center">
+        <img src="images/team/scholar_photo.png" alt="Name" class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-purple-500/40 shadow-md mb-4">
+        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Dr. Scholar Name</h4>
+        <p class="text-xs text-purple-600 dark:text-purple-400 font-mono font-bold uppercase mt-1">Designation / Role</p>
     </div>
-    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Project Name (e.g. CanSat Prototype)</h3>
-    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
-        Short explanation of the project hardware, software stack, and research goals.
-    </p>
-    <a href="https://github.com" target="_blank" class="text-xs text-indigo-600 dark:text-sky-400 font-bold hover:underline">View Project Repo &rarr;</a>
+    <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800/80 text-center">
+        <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Degree Awarded - 2026</span>
+    </div>
 </div>
 ```
 
 ---
 
-## 👥 6. How to Add a New Team Member Card
+## 🏷️ 7. How to Update / Rename the Society or Club Name
 
-In **`index.html`**, under `<section id="team">`:
-Copy and paste this clean team member template block:
+If you need to change or adjust the official name of the society (e.g. updating titles, branding, or suffixes), follow these exact steps to ensure all locations across the website and metadata are updated:
 
-```html
-<!-- New Team Member Card -->
-<div class="team-card core glass-card rounded-2xl p-6 text-center">
-    <img src="images/member_photo.jpg" alt="Name" class="w-24 h-24 mx-auto rounded-full object-cover mb-4">
-    <h3 class="text-xl font-bold text-slate-900 dark:text-white">Student Name</h3>
-    <p class="text-xs text-indigo-600 dark:text-sky-400 font-mono uppercase mt-1">Role Title</p>
-    <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Department / Year</p>
-</div>
+### 1. `index.html` (Main Page & Metadata)
+Open **`index.html`** in a text editor and update the following lines:
+- **Browser Tab Title** (around line 28):
+  ```html
+  <title>SLIET Antriksha Vigyan Society | Space & Astronomy</title>
+  ```
+- **SEO & Social Meta Tags** (lines 8–26):
+  - `<meta name="description" content="...">`
+  - `<meta name="keywords" content="...">`
+  - `<meta name="author" content="...">`
+  - `<meta property="og:title" content="...">`
+  - `<meta property="og:description" content="...">`
+  - `<meta name="twitter:title" content="...">`
+  - `<meta name="twitter:description" content="...">`
+- **JSON-LD Schema Markup** (around lines 50–54):
+  ```json
+  "name": "SLIET Antriksha Vigyan Society",
+  "alternateName": "SLIET Space Society",
+  "description": "Official Space, Astronomy, and Satellite Technology Student Society at..."
+  ```
+- **Navigation Bar Logo Text** (around line 131):
+  ```html
+  <span>SAVS</span>
+  ```
+- **Hero Section Headline & Badge** (around lines 213–218):
+  - Badge: `Official Astronomy & Space Society of SLIET`
+  - Main Heading: `SLIET Antriksha Vigyan Society`
+- **About Us, Team & Faculty Roles** (lines 350, 381, 408, 563, 598):
+  - Replace `Club` / `Society` references in the bio paragraphs and role titles (e.g., `Faculty Head & Society Mentor`).
+- **Footer & Modals** (lines 713, 734, 753):
+  - Footer copyright: `© 2026 SLIET Antriksha Vigyan Society. All rights reserved.`
+  - Modal description text.
+
+### 2. `manifest.json` (Mobile & Web App Manifest)
+Open **`manifest.json`** and update:
+```json
+{
+  "name": "SLIET Antriksha Vigyan Society",
+  "short_name": "SAVS",
+  "description": "Official Space & Astronomy Society of SLIET Longowal"
+}
 ```
+
+### 3. `config.js` (Configuration File)
+Open **`config.js`** and update header comments, form comments, and `facultyHead.bio`:
+```javascript
+bio: "Founded the SLIET Antriksha Vigyan Society, leading student innovation..."
+```
+
+### 4. Project Documentation (`README.md`, `style.css`, `script.js`, `.htaccess`)
+- **`README.md`**: Update `# SLIET Antriksha Vigyan Society` on line 1.
+- Header comments in **`style.css`**, **`script.js`**, and **`.htaccess`**.
 
 ---
 
-## 🌐 7. How to Upload Changes to Web Hosting (cPanel / Server)
+## 🌐 8. How to Upload Changes to Web Hosting (cPanel / Server)
 
 1. Log into your **GoDaddy cPanel Account**.
 2. Open **File Manager** -> **`public_html`**.
@@ -155,4 +229,4 @@ Copy and paste this clean team member template block:
 
 ---
 
-✨ *Maintained by SLIET Antriksha Vigyan Club Tech Team.*
+✨ *Maintained by SLIET Antriksha Vigyan Society Tech Team.*

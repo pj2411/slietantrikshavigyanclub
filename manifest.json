@@ -1,7 +1,7 @@
 {
-  "name": "SLIET Antriksha Vigyan Club",
-  "short_name": "Antriksha",
-  "description": "Official Space & Astronomy Club of SLIET Longowal",
+  "name": "SLIET Antriksha Vigyan Society",
+  "short_name": "SAVS",
+  "description": "Official Space & Astronomy Society of SLIET Longowal",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f8fafc",

@@ -1,16 +1,16 @@
 /* ====================================================================
-   SLIET ANTRIKSHA VIGYAN CLUB - BEGINNER CONFIGURATION FILE (config.js)
+   SLIET ANTRIKSHA VIGYAN SOCIETY - BEGINNER CONFIGURATION FILE (config.js)
    ====================================================================
    Edit the Google Form links, emails, and details below easily!
    ==================================================================== */
 
 window.CLUB_CONFIG = {
     // 1. Google Form Links (KEPT SEPARATE TO PREVENT CONFUSION)
-    joinUsFormUrl: "https://forms.google.com", // 🟢 1. Club Membership & Recruitment Google Form
+    joinUsFormUrl: "https://forms.google.com", // 🟢 1. Society Membership & Recruitment Google Form
     eventFormUrl:  "https://forms.google.com", // 🔵 2. Event Registration Google Form
 
     // 2. Official Contacts
-    officialEmail: "antriksha@sliet.ac.in",    // Official Club Email
+    officialEmail: "antriksha@sliet.ac.in",    // Official Society Email
     instagramUrl:  "https://instagram.com",     // Instagram Handle URL
     facultyWebsite: "https://rkmishra.com/",   // Dr. R.K. Mishra's website
 
@@ -25,9 +25,9 @@ window.CLUB_CONFIG = {
     // 4. Faculty Head Information
     facultyHead: {
         name: "Dr. Ravi Kant Mishra",
-        role: "Faculty Head & Club Mentor",
+        role: "Faculty Head & Society Mentor",
         designation: "Professor & Dean (Alumni and Industrial Relations)",
         photoPath: "rk_mishra.png",
-        bio: "Founded the SLIET Antriksha Vigyan Club, leading student innovation across space science, observational astrophysics, and institutional outreach."
+        bio: "Dr. Ravi Kant Mishra is a Professor and Dean at SLIET Longowal with 28+ years of leadership in Cosmology, Astrophysics, and Space Science, known for his extensive research in modified gravity theories and cosmological modeling. As the founder of the SLIET Antriksha Vigyan Society, he mentors student-led space research, while his academic footprint spans invited lectures at premier astrophysics forums across the USA and Europe, service as former Registrar of NIT Puducherry, and membership on Faculty Selection Boards across multiple NITs."
     }
 };
