@@ -7,11 +7,11 @@
 window.CLUB_CONFIG = {
     // 1. Google Form Links (KEPT SEPARATE TO PREVENT CONFUSION)
     joinUsFormUrl: "https://forms.google.com", // 🟢 1. Society Membership & Recruitment Google Form
-    eventFormUrl:  "https://forms.google.com", // 🔵 2. Event Registration Google Form
+    eventFormUrl: "https://forms.google.com", // 🔵 2. Event Registration Google Form
 
     // 2. Official Contacts
     officialEmail: "antriksha@sliet.ac.in",    // Official Society Email
-    instagramUrl:  "https://instagram.com",     // Instagram Handle URL
+    instagramUrl: "https://instagram.com",     // Instagram Handle URL
     facultyWebsite: "https://rkmishra.com/",   // Dr. R.K. Mishra's website
 
     // 3. Astronomy Alert Banner (Sky Watch Section)

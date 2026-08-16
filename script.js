@@ -4,6 +4,9 @@
 
 // Set Current Date & Year dynamically + Sync Google Form URL from config.js
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Ensure site opens in Light Mode
+    initTheme();
+
     // 1. Dynamic Date & Year
     const dateSpan = document.getElementById('current-date-display');
     if (dateSpan) {
@@ -58,21 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Theme Switcher Logic (Default: Light Mode)
+// Theme Switcher Logic (Default: Light Mode on page open)
 function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        updateThemeIcons(true);
-    } else {
-        document.documentElement.classList.remove('dark');
-        updateThemeIcons(false);
-    }
+    document.documentElement.classList.remove('dark');
+    localStorage.removeItem('theme');
+    updateThemeIcons(false);
 }
 
 function toggleTheme() {
     const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateThemeIcons(isDark);
 }
 
@@ -180,11 +177,11 @@ function animateStars() {
     if (!ctx || !canvas) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const isDark = document.documentElement.classList.contains('dark');
-    
+
     stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        
+
         // Color tuning based on active mode
         if (isDark) {
             ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha * 0.95})`;

@@ -8,7 +8,7 @@ Redesigned with a modern **Light Mode UI**, an interactive starfield particle ca
 
 ## ✨ Features
 
-- **Adaptive Aesthetic:** Light Mode (default) with a Sun/Moon theme switcher saved in `localStorage`.
+- **Adaptive Aesthetic:** Opens in Light Mode by default with an interactive Sun/Moon theme switcher.
 - **Interactive Particle Canvas:** Stargazing canvas featuring dynamic light/dark particle physics.
 - **Live Astronomical Alerts:** Auto-formatting alert widget for real-time sky events.
 - **Join Application Modal:** Interactive recruitment portal with instant submission feedback and direct Google Form integration.
