@@ -97,30 +97,28 @@ All website events are managed inside **`index.html`** under `<section id="event
 
 ---
 
-### ➕ Method B: How to Add a New Standard Workshop / Stargazing Event Card
-To add a new event card under `<section id="events">`:
-1. Open **`index.html`** under `<section id="events">`.
-2. Copy and paste this clean Event Card snippet inside the events container:
+### ➕ Method B: How to Add a New Standard Event & Move Old Events to Archives
+
+**IMPORTANT:** Do NOT delete old events! When adding a new event, always move the previous event to the **Past Sessions & Archives** grid so it remains visible on the website.
+
+1. Open **`index.html`** and find the `<section id="events">` area.
+2. Scroll down to the `id="past-events-grid"` section.
+3. Copy the old event details into a new "Past Event" card inside `past-events-grid`:
 
 ```html
-<!-- New Event Card Template -->
-<div class="glass-card p-6 sm:p-8 rounded-2xl border-l-4 border-l-indigo-600 flex flex-col justify-between shadow-md">
-    <div>
-        <div class="flex items-center justify-between mb-3">
-            <span class="px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-sky-300 text-xs font-mono font-bold uppercase">WORKSHOP / SESSION</span>
-            <span class="text-xs font-mono text-slate-500 dark:text-slate-400"><i class="fa-regular fa-calendar mr-1"></i> Date Here</span>
-        </div>
-        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Event Title Here</h4>
-        <p class="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed font-mono">
-            Write your event description, eligibility, and rules here.
-        </p>
+<!-- Past Event Card Template -->
+<div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm opacity-90 hover:opacity-100 transition-opacity">
+    <div class="flex justify-between items-start mb-4">
+        <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-mono font-bold uppercase">Past Event</span>
+        <span class="text-xs font-mono text-slate-500">Event Date Here</span>
     </div>
-    <div class="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-        <span class="text-xs font-mono text-slate-500 dark:text-slate-400"><i class="fa-solid fa-location-dot text-indigo-600 dark:text-sky-400 mr-1"></i> Venue / Location</span>
-        <button onclick="openJoinModal()" class="text-xs text-indigo-600 dark:text-sky-400 font-bold hover:underline">Register &rarr;</button>
-    </div>
+    <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Old Event Title Here</h4>
+    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+        Short description of what happened at the event.
+    </p>
 </div>
 ```
+4. Now, you can safely update the main **Featured Event** block at the top of the Events section with your brand new event details (as shown in Method A).
 
 ---
 
@@ -220,13 +218,107 @@ bio: "Founded the SLIET Antriksha Vigyan Society, leading student innovation..."
 
 ---
 
-## 🌐 8. How to Upload Changes to Web Hosting (cPanel / Server)
+## 📚 9. How to Add & Edit Research Publications
 
-1. Log into your **GoDaddy cPanel Account**.
-2. Open **File Manager** -> **`public_html`**.
-3. Upload the modified file (`index.html`, `config.js`, or new image files in `images/`).
-4. Refresh your domain website (`https://yourdomain.com`).
+All research papers and publications are managed cleanly inside **`config.js`** under `window.CLUB_CONFIG.publications`.
+
+To add a new publication authored by **Dr. Ravi Kant Mishra** or society members:
+1. Open **`config.js`** in any text editor.
+2. Scroll to `publications: [ ... ]`.
+3. Copy and paste the block below into the list:
+
+```javascript
+{
+    id: "pub-4",
+    title: "Your Research Paper Title Here",
+    authors: ["Dr. Ravi Kant Mishra", "Co-Author Name"],
+    journal: "Journal Name or Conference (2024)",
+    year: "2024",
+    category: "cosmology", // Choose: 'cosmology', 'astrophysics', or 'spacetech'
+    doiUrl: "https://doi.org/10.xxxx/xxxx", // Link to full paper or DOI
+    pdfUrl: "https://rkmishra.com/", // Link to PDF or portfolio
+    abstract: "A short 2-3 sentence summary of the paper research findings.",
+    tags: ["Cosmology", "Dark Energy"]
+}
+```
+
+4. Save **`config.js`** and refresh the website. The new paper will instantly appear on both the main website `#publications` section and `https://slietantrikshavigyansociety.vercel.app/publications` with search, filter, and 1-click citation copy buttons!
+
+---
+
+## 🛰️ 10. How to Re-Enable or Modify "Our Operational Domains" Section
+
+The **Operational Domains** section (highlighting Astronomy, Astrophysics, Space Tech, Satellite Electronics, and Astrophotography) is currently hidden. 
+
+### 🟢 How to Turn ON / Re-Enable the Domains Section:
+1. Open **`index.html`** in your code editor.
+2. Search (`Ctrl + F` / `Cmd + F`) for `id="domains"`.
+3. Locate line 549: `<section id="domains" class="hidden py-20 relative z-10">`.
+4. **Remove `hidden`** from the class list so it becomes:
+   ```html
+   <section id="domains" class="py-20 relative z-10">
+   ```
+5. To re-enable the **Domains** link in the top navigation menu, search for `<!-- <a href="#domains"` in **`index.html`** and **`publications.html`** and remove the `<!--` and `-->` comment tags around it:
+   ```html
+   <a href="#domains" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Domains</a>
+   ```
+
+### ✏️ How to Edit Domain Cards Text or Icons:
+Each operational domain card is inside `<section id="domains">` in **`index.html`**. You can easily edit the titles, FontAwesome icon names (`fa-binoculars`, `fa-atom`, `fa-laptop-code`, `fa-microchip`, `fa-camera-retro`), and descriptions directly in HTML.
+
+---
+
+## ⚡ 11. Website Deployment, Workflow & Future Backend Integration
+
+### 🌐 Deploying Updates to Web Hosting
+
+#### 1. Vercel Deployment (Recommended)
+- Push changes to your GitHub repository connected to Vercel.
+- The `vercel.json` file automatically handles clean URL rewrites (e.g. `/publications` -> `publications.html`).
+
+#### 2. GoDaddy / Apache cPanel Hosting
+1. Log into your **cPanel Account** -> **File Manager** -> **`public_html`**.
+2. Upload the updated files (`index.html`, `publications.html`, `config.js`, `script.js`, `.htaccess`).
+3. `.htaccess` automatically enforces HTTPS redirection, Brotli/Gzip compression, browser caching, and clean URL rewrites.
+
+---
+
+### 🔌 Future Backend & REST API Integration Guide
+
+The website is currently built using a clean **Config-Driven Static Architecture** (`config.js` + `script.js`), making it super fast and requiring zero database setup. However, when the society decides to add a backend server:
+
+```text
+Current Workflow:
+Browser -> index.html / publications.html -> config.js (Static Data)
+
+Future Backend Workflow:
+Browser -> index.html / publications.html -> REST API (/api/publications) -> Database (MongoDB / PostgreSQL)
+```
+
+#### Steps to Connect a Backend Server:
+1. **Publications API**: In `script.js`, replace `let items = window.CLUB_CONFIG.publications;` with an async API fetch:
+   ```javascript
+   async function getPublications() {
+       const response = await fetch('/api/publications');
+       const data = await response.json();
+       return data;
+   }
+   ```
+2. **Form Submissions API**: In `script.js`, replace the Google Form external link with a custom POST request:
+   ```javascript
+   async function submitApplication(formData) {
+       await fetch('/api/join-us', {
+           method: 'POST',
+           headers: { 'Content-Type': 'application/json' },
+           body: JSON.stringify(formData)
+       });
+   }
+   ```
+3. **Executive Admin Dashboard**: Build an executive login panel at `/admin` where society leads can add publications or manage event registrations without touching the code.
 
 ---
 
 ✨ *Maintained by SLIET Antriksha Vigyan Society Tech Team.*
+
+
+

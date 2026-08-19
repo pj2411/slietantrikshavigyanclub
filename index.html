@@ -141,7 +141,8 @@
                 <a href="#sky-watch"
                     class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5"><i
                         class="fa-solid fa-moon text-xs text-amber-600 dark:text-sky-400"></i> Sky Watch</a>
-                <a href="#domains" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Domains</a>
+                <a href="#publications" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Publications</a>
+                <!-- <a href="#domains" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Domains</a> -->
                 <a href="#events" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Events</a>
                 <a href="#contact" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">Contact</a>
                 <a href="#about" class="hover:text-amber-700 dark:hover:text-sky-400 transition-colors">About</a>
@@ -181,8 +182,9 @@
             <a href="#home" class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Home</a>
             <a href="#sky-watch" class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Sky
                 Watch</a>
-            <a href="#domains"
-                class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Domains</a>
+            <a href="#publications"
+                class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Publications</a>
+            <!-- <a href="#domains" class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Domains</a> -->
             <a href="#events"
                 class="block hover:text-amber-600 dark:hover:text-sky-400 transition-colors py-1">Events</a>
             <a href="#contact"
@@ -496,10 +498,74 @@
         </div>
     </section>
 
+    <!-- Publications Section -->
+    <section id="publications" class="py-20 relative z-10 border-t border-slate-200/50 dark:border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+            <div class="text-center max-w-3xl mx-auto reveal-on-scroll">
+                <span class="px-3.5 py-1.5 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-sky-300 text-xs font-mono font-bold uppercase tracking-widest inline-flex items-center gap-2 mb-3">
+                    <i class="fa-solid fa-book-bookmark text-amber-500"></i> Research & Scholarly Work
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Publications & Research Papers</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+                    All featured publications, cosmological models, and research belong exclusively to <strong class="text-indigo-600 dark:text-sky-400 whitespace-nowrap">Dr. Ravi Kant Mishra</strong> (Professor, Dean, and SAVS Founder & Mentor), who holds <strong class="text-slate-900 dark:text-white font-bold whitespace-nowrap">120+ total publications</strong> (<span class="text-amber-700 dark:text-amber-400 font-bold whitespace-nowrap">55+ indexed in SCI/Scopus/WoS</span>).
+                </p>
+            </div>
 
+            <!-- Filter Controls & Search Bar -->
+            <div class="glass-card rounded-2xl p-4 sm:p-6 reveal-on-scroll flex flex-col md:flex-row items-center justify-between gap-4">
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="pub-category-filters">
+                    <button onclick="filterPublications('all')" id="pub-filter-all" class="pub-filter-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-600 text-white shadow-md">
+                        All Works
+                    </button>
+                    <button onclick="filterPublications('cosmology')" id="pub-filter-cosmology" class="pub-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                        Cosmology
+                    </button>
+                    <button onclick="filterPublications('astrophysics')" id="pub-filter-astrophysics" class="pub-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                        Astrophysics
+                    </button>
+                    <button onclick="filterPublications('spacetech')" id="pub-filter-spacetech" class="pub-filter-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                        Space Tech
+                    </button>
+                </div>
 
-    <!-- Domains Section (Section 3) -->
-    <section id="domains" class="py-20 relative z-10">
+                <!-- Search Input -->
+                <div class="relative w-full md:w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" id="pub-search-input" onkeyup="searchPublications()" placeholder="Search title, keywords, authors..."
+                        class="w-full pl-9 pr-4 py-2 rounded-xl text-xs bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                </div>
+            </div>
+
+            <!-- Official Faculty Portal Redirect Banner -->
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border-l-4 border-amber-500 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-amber-500/10 via-indigo-500/5 to-transparent reveal-on-scroll">
+                <div class="flex items-center gap-3 text-center sm:text-left">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white">Looking for complete research archives & publications?</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Visit Dr. Ravi Kant Mishra's official faculty research portal for full paper downloads & academic profile.</p>
+                    </div>
+                </div>
+                <a href="https://rkmishra.com/publication" target="_blank" rel="noopener noreferrer"
+                    class="shrink-0 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 font-extrabold text-xs shadow-md hover:shadow-lg hover:scale-105 transition-all flex items-center gap-2">
+                    <span>Visit Official Portal</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+                </a>
+            </div>
+
+            <!-- Publications Cards Container -->
+            <div id="publications-grid" class="grid grid-cols-1 gap-6 reveal-on-scroll">
+                <!-- Dynamically populated by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Domains Section (TEMPORARILY DISABLED / HIDDEN BY DEFAULT) -->
+    <!-- TO RE-ENABLE: Remove 'hidden' class from <section id="domains"> below and uncomment navbar links -->
+    <section id="domains" class="hidden py-20 relative z-10">
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
                 <span
@@ -708,6 +774,30 @@
                 </div>
 
             </div>
+
+            <!-- Past Events & Archives -->
+            <div class="mt-16 reveal-on-scroll">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-8">
+                    <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Past Sessions & Archives</h3>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="past-events-grid">
+                    <!-- Example of a past event card that was moved here -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm opacity-90 hover:opacity-100 transition-opacity">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-mono font-bold uppercase">
+                                Past Event
+                            </span>
+                            <span class="text-xs font-mono text-slate-500">12 August 2026</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Introduction to Observational Astronomy</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                            An evening under the stars learning how to navigate the night sky using sky maps.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -764,7 +854,6 @@
             <div class="team-card alumni space-y-4">
                 <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center justify-between">
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white">Distinguished Alumni Scholars</h3>
-                    <span class="text-xs font-mono font-semibold text-purple-600 dark:text-purple-400">Ph.D. Degree Awarded: 05+</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -798,7 +887,7 @@
                             <img src="images/team/chanchal_chawla.png" alt="Dr. Chanchal Chawla" class="w-20 h-20 mx-auto rounded-full object-cover border-2 border-purple-500/40 shadow-md mb-4">
                             <h4 class="text-lg font-bold text-slate-900 dark:text-white">Dr. Chanchal Chawla</h4>
                             <p class="text-xs text-purple-600 dark:text-purple-400 font-mono font-bold uppercase mt-1">AP (Maths-DED) Punjabi University, Patiala</p>
-                            <p class="text-xxs text-indigo-600 dark:text-sky-400 font-mono font-semibold mt-1">(CSIR-JRF-SRF)</p>
+                            <p class="text-xs text-purple-600 dark:text-purple-400 font-mono font-bold uppercase mt-1">(CSIR-JRF-SRF)</p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800/80 text-center">
                             <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Degree Awarded - 2015</span>
@@ -835,7 +924,6 @@
             <div class="team-card student space-y-4">
                 <div class="border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center justify-between">
                     <h3 class="text-xl font-bold text-slate-900 dark:text-white">Current Ph.D. Research Scholars</h3>
-                    <span class="text-xs font-mono font-semibold text-sky-600 dark:text-sky-400">CSIR-LS Qualified</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -864,6 +952,20 @@
                             <span class="inline-block px-3 py-1 rounded bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 text-xs font-mono font-bold">
                                 (GATE-Qualified-2023)
                             </span>
+                        </div>
+                    </div>
+
+                    <!-- Research Scholar 3: Ms. Priya -->
+                    <div class="glass-card rounded-2xl p-6 hover:-translate-y-1 transition-all border border-slate-200 dark:border-slate-700/80 shadow-md flex flex-col justify-between text-center">
+                        <div>
+                            <div class="w-24 h-24 mx-auto rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-sky-500/40 shadow-md mb-4 flex items-center justify-center text-slate-400 dark:text-slate-500">
+                                <i class="fa-solid fa-user text-4xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white">Ms. Priya</h4>
+                            <p class="text-xs text-sky-600 dark:text-sky-400 font-mono font-bold uppercase mt-1">Pursuing Ph.D.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800/80">
+                            <!-- Placeholder for future qualifications like GATE/NET -->
                         </div>
                     </div>
                 </div>

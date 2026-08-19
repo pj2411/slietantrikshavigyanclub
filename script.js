@@ -59,6 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         revealElements.forEach(el => el.classList.add('is-visible'));
     }
+
+    // 5. Initialize Research & Publications Engine
+    initPublications();
 });
 
 // Theme Switcher Logic (Default: Light Mode on page open)
@@ -550,4 +553,170 @@ function updateAstronomicalAlerts() {
     if (planetBadgeEl) planetBadgeEl.textContent = planetBadge;
     if (planetDescEl) planetDescEl.textContent = planetDesc;
 }
+
+/* ====================================================================
+   5. Research & Publications System Logic
+   ==================================================================== */
+let currentPubCategory = 'all';
+
+function initPublications() {
+    renderPublications();
+    handlePublicationsRouting();
+}
+
+function handlePublicationsRouting() {
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+    if (path.endsWith('/publications') || path.endsWith('/publications.html') || hash === '#publications') {
+        const pubSection = document.getElementById('publications');
+        if (pubSection) {
+            setTimeout(() => {
+                pubSection.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+    }
+}
+
+function renderPublications(filterCategory = 'all', searchQuery = '') {
+    const grid = document.getElementById('publications-grid');
+    if (!grid) return;
+
+    if (!window.CLUB_CONFIG || !window.CLUB_CONFIG.publications) {
+        grid.innerHTML = `<p class="text-center text-slate-500 py-8">No publications configured.</p>`;
+        return;
+    }
+
+    let items = window.CLUB_CONFIG.publications;
+
+    if (filterCategory !== 'all') {
+        items = items.filter(item => item.category === filterCategory);
+    }
+
+    if (searchQuery.trim() !== '') {
+        const query = searchQuery.toLowerCase().trim();
+        items = items.filter(item => 
+            item.title.toLowerCase().includes(query) ||
+            item.journal.toLowerCase().includes(query) ||
+            item.authors.some(author => author.toLowerCase().includes(query)) ||
+            (item.tags && item.tags.some(tag => tag.toLowerCase().includes(query)))
+        );
+    }
+
+    if (items.length === 0) {
+        grid.innerHTML = `
+            <div class="glass-card rounded-2xl p-8 text-center text-slate-500 dark:text-slate-400">
+                <i class="fa-solid fa-file-circle-xmark text-4xl mb-3 text-indigo-400"></i>
+                <p class="font-bold text-base">No matching publications found.</p>
+                <p class="text-xs mt-1">Try clearing your search query or selecting another topic category.</p>
+            </div>
+        `;
+        return;
+    }
+
+    grid.innerHTML = items.map(item => {
+        const authorBadges = item.authors.map(author => {
+            if (author.includes("Dr. Ravi Kant Mishra")) {
+                return `<span class="px-2.5 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-sky-300 font-bold text-xs border border-indigo-200 dark:border-indigo-800 whitespace-nowrap"><i class="fa-solid fa-user-graduate mr-1 text-indigo-500"></i> ${author}</span>`;
+            }
+            return `<span class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-xs whitespace-nowrap">${author}</span>`;
+        }).join(" ");
+
+        const tagBadges = (item.tags || []).map(tag => 
+            `<span class="px-2 py-0.5 rounded bg-slate-200/60 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 font-mono text-[11px]">#${tag}</span>`
+        ).join(" ");
+
+        return `
+            <div class="glass-card rounded-2xl p-6 sm:p-8 hover:border-indigo-500/40 transition-all duration-300 group shadow-lg relative overflow-hidden">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <span class="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
+                        ${item.journal} (${item.year})
+                    </span>
+                    <span class="px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 text-[11px] font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-[9px]"></i> Peer-Reviewed
+                    </span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-snug group-hover:text-indigo-600 dark:group-hover:text-sky-400 transition-colors mb-4">
+                    ${item.title}
+                </h3>
+
+                <div class="flex flex-wrap items-center gap-2 mb-4">
+                    <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400 mr-1">AUTHORS:</span>
+                    ${authorBadges}
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/60 mb-5">
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                        ${item.abstract}
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-slate-200/60 dark:border-slate-800/60">
+                    <div class="flex flex-wrap items-center gap-1.5">
+                        ${tagBadges}
+                    </div>
+                </div>
+            </div>
+
+        `;
+    }).join('');
+}
+
+function filterPublications(category) {
+    currentPubCategory = category;
+    const filterBtns = document.querySelectorAll('.pub-filter-btn');
+    filterBtns.forEach(btn => {
+        btn.classList.remove('active', 'bg-indigo-600', 'text-white', 'shadow-md');
+        btn.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+    });
+
+    const activeBtn = document.getElementById(`pub-filter-${category}`);
+    if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-indigo-600', 'text-white', 'shadow-md');
+        activeBtn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+    }
+
+    const searchInput = document.getElementById('pub-search-input');
+    const query = searchInput ? searchInput.value : '';
+    renderPublications(category, query);
+}
+
+function searchPublications() {
+    const searchInput = document.getElementById('pub-search-input');
+    const query = searchInput ? searchInput.value : '';
+    renderPublications(currentPubCategory, query);
+}
+
+function copyCitation(pubId) {
+    if (!window.CLUB_CONFIG || !window.CLUB_CONFIG.publications) return;
+    const item = window.CLUB_CONFIG.publications.find(p => p.id === pubId);
+    if (!item) return;
+
+    const citationText = `${item.authors.join(', ')} (${item.year}). "${item.title}." ${item.journal}. DOI: ${item.doiUrl}`;
+    
+    navigator.clipboard.writeText(citationText).then(() => {
+        showToast('Citation copied to clipboard!');
+    }).catch(() => {
+        alert('Citation copied:\n' + citationText);
+    });
+}
+
+function showToast(message) {
+    const existing = document.getElementById('savs-toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'savs-toast';
+    toast.className = 'fixed bottom-6 right-6 z-50 px-5 py-3 rounded-2xl bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-semibold text-xs shadow-2xl flex items-center gap-2 border border-slate-700 dark:border-slate-300 transition-all transform translate-y-0 opacity-100';
+    toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600"></i> <span>${message}</span>`;
+    
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 300);
+    }, 2500);
+}
+
 

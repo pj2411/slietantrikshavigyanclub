@@ -40,5 +40,11 @@
     Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# 5. Error Documents & Custom 404 Routing
+# 5. Clean URL Rewrites
+<IfModule mod_rewrite.c>
+    RewriteRule ^publications/?$ publications.html [L]
+</IfModule>
+
+# 6. Error Documents & Custom 404 Routing
 ErrorDocument 404 /index.html
+
